@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import ApolloShell from './containers/ApolloShell';
 
 class App extends Component {
@@ -18,12 +19,10 @@ class App extends Component {
   render() {
     const { email } = this.state;
     return (
-      <div className="App">
-        <h1>Welcome to the Spitfire Cagematch</h1>
         <ApolloShell
           email={email}
-          setEmail={this.setEmail} />
-      </div>
+          setEmail={this.setEmail}
+        />
     );
   }
 }

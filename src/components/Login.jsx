@@ -1,17 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Email from '../components/Email';
 import OptIn from '../components/OptIn';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height:100vh;
+`;
+
+const Welcome = styled.h1`
+
+`;
+
 const Login = ({ email, setEmail, createUser }) =>
-  <div>
+  <Container>
+    <Welcome>Join the Cagematch</Welcome>
     {!email &&
       <Email onSubmit={setEmail} />
     }
     {email &&
       <OptIn onSubmit={createUser} />
     }
-  </div>
+  </Container>
 
 Login.propTypes = {
   email: PropTypes.string,
