@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const Welcome = styled.h1`
-
+  margin-top: 0px;
 `;
 
 const Login = ({ email, setEmail, createUser }) =>

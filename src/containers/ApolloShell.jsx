@@ -11,14 +11,14 @@ const ApolloShell = ({ createUser, findUser, findMatches: { error, loading, matc
     <div>
       {loading && <h1>Loading...</h1>}
       {error && <h1>ERROR</h1>}
-      {(!findUser || !findUser.user) &&
+      {!loading && !error && (!findUser || !findUser.user) &&
         <Login
           email={email}
           setEmail={setEmail}
           createUser={(hasOptedIn) => createUser(email, hasOptedIn)}
         />
       }
-      {findUser && findUser.user && matches && matches.length &&
+      {!loading && !error && findUser && findUser.user && matches && matches.length &&
         <Vote user={findUser.user} match={matches[0]} />
       }
     </div>
