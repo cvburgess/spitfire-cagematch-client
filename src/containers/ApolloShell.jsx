@@ -11,7 +11,7 @@ const ApolloShell = ({ createUser, findUser, findMatches: { error, loading, matc
     <div>
       {loading && <h1>Loading...</h1>}
       {error && <h1>ERROR</h1>}
-      {!(findUser || findUser.user) &&
+      {(!findUser || !findUser.user) &&
         <Login
           email={email}
           setEmail={setEmail}
@@ -41,7 +41,14 @@ export default compose(
   }),
   graphql(CREATE_USER, {
     props: ({ mutate }) => ({
-      createUser: (email, hasOptedIn) => mutate({ variables: { email, hasOptedIn } }),
+      createUser: (email, hasOptedIn) => mutate({
+        variables: { email, hasOptedIn },
+        update: (store, { data: { createUser } }) => {
+            const data = store.readQuery({ query: FIND_USER, variables: { email } });
+            data.user = createUser;
+            store.writeQuery({ query: FIND_USER, variables: { email }, data });
+          },
+      }),
     })
   })
 )(ApolloShell);
