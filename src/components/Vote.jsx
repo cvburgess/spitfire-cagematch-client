@@ -18,6 +18,9 @@ const Vote = ({ match, user }) =>
     }
   </div>
 
-Vote.propTypes = {};
+Vote.propTypes = {
+  match: PropTypes.object,
+  user: PropTypes.object
+};
 
 export default Vote;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import ApolloShell from './containers/ApolloShell';
 
 class App extends Component {

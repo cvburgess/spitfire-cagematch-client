@@ -15,7 +15,14 @@ const Team = ({ canVote, createVote, matchId, name, teamId, userId }) =>
     }
   </div>
 
-Team.propTypes = {};
+Team.propTypes = {
+  canVote: PropTypes.bool,
+  createVote: PropTypes.func,
+  matchId: PropTypes.string,
+  name: PropTypes.string,
+  teamId: PropTypes.string,
+  userId: PropTypes.string
+};
 
 export default graphql(CREATE_VOTE, {
   props: ({ mutate, ownProps: { matchId, teamId, userId } }) => ({
