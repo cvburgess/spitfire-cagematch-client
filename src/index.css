@@ -5,3 +5,11 @@ body {
   background: #000;
   color: #FFF;
 }
+
+input:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
