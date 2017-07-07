@@ -2,22 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const primaryColor = '#185A9D';
-const secondaryColor = '#43CEA2';
-const dangerColor = '#F15E14';
-const warningColor = '#F1BE14';
-
 const Container = styled.div``;
+
 const CheckboxButton = styled.button`
   color: #000;
   font-size: 20px;
-  background: ${props => props.hasOptedIn ? secondaryColor : dangerColor};
+  background: ${props => props.hasOptedIn ? '#43CEA2' : '#F15E14'};
   padding: 10px 15px 10px 15px;
   text-decoration: none;
   border: none;
   max-height: 50px;
   margin-right: 10px;
 `;
+
 const Button = styled.button`
   color: #000;
   font-size: 20px;

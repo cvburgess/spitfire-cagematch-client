@@ -4,20 +4,48 @@ import styled from 'styled-components';
 import { graphql } from 'react-apollo';
 import { CREATE_VOTE } from '../graphql';
 
-const TeamName = styled.span``;
-const VoteButton = styled.button``;
+const colors = [
+  '#9d1893',
+  '#185A9D',
+  '#43CEA2',
+  '#F15E14',
+];
 
-const Team = ({ canVote, createVote, matchId, name, teamId, userId }) =>
-  <div>
+const Container = styled.div`
+  background: ${props => colors[props.order]};
+  height: ${props => props.height}%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+`;
+
+const TeamName = styled.h2``;
+
+const VoteButton = styled.button`
+  color: #000;
+  font-size: 20px;
+  background: #fff;
+  padding: 10px 15px 10px 15px;
+  text-decoration: none;
+  border: none;
+  max-height: 50px;
+`;
+
+const Team = ({ canVote, createVote, height, matchId, name, order, teamId, userId }) =>
+  <Container height={height} order={order}>
     <TeamName>{name}</TeamName>
     {canVote &&
       <VoteButton onClick={createVote}>Vote</VoteButton>
     }
-  </div>
+  </Container>
 
 Team.propTypes = {
   canVote: PropTypes.bool,
   createVote: PropTypes.func,
+  height: PropTypes.int,
   matchId: PropTypes.string,
   name: PropTypes.string,
   teamId: PropTypes.string,

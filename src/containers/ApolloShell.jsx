@@ -6,24 +6,24 @@ import { FIND_USER, FIND_MATCHES, CREATE_USER } from '../graphql';
 import Login from '../components/Login';
 import Vote from '../components/Vote';
 
-const ApolloShell = ({ createUser, findUser, findMatches: { error, loading, matches }, email, setEmail }) => {
-  return (
-    <div>
-      {loading && <h1>Loading...</h1>}
-      {error && <h1>ERROR</h1>}
-      {!loading && !error && (!findUser || !findUser.user) &&
-        <Login
-          email={email}
-          setEmail={setEmail}
-          createUser={(hasOptedIn) => createUser(email, hasOptedIn)}
-        />
-      }
-      {!loading && !error && findUser && findUser.user && matches && matches.length &&
-        <Vote user={findUser.user} match={matches[0]} />
-      }
-    </div>
-  );
-};
+const ApolloShell = ({ createUser, findUser, findMatches: { error, loading, matches }, email, setEmail }) =>
+  <div>
+    {loading && <h1>Loading...</h1>}
+    {error && <h1>ERROR</h1>}
+    {!loading && !error && (!findUser || !findUser.user) &&
+      <Login
+        email={email}
+        setEmail={setEmail}
+        createUser={(hasOptedIn) => createUser(email, hasOptedIn)}
+      />
+    }
+    {!loading && !error && findUser && findUser.user && matches &&
+      <Vote
+        user={findUser.user}
+        match={matches[0]}
+      />
+    }
+  </div>
 
 ApolloShell.propTypes = {
   email: PropTypes.string
